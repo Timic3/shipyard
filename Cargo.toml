@@ -1,0 +1,31 @@
+[package]
+name = "shipyard"
+version = "0.1.0"
+edition = "2021"
+description = "Tauri update server backed by GitHub Releases"
+license = "MIT"
+
+[[bin]]
+name = "shipyard"
+path = "src/main.rs"
+
+[dependencies]
+axum = { version = "0.7.9", features = ["json"] }
+tokio = { version = "1.44.2", features = ["full"] }
+reqwest = { version = "0.12.15", features = ["json", "rustls-tls"], default-features = false }
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = { version = "1.0.140" }
+toml = { version = "0.8.22" }
+moka = { version = "0.12.10", features = ["future"] }
+semver = { version = "1.0.26" }
+tracing = { version = "0.1.41" }
+tracing-subscriber = { version = "0.3.19", features = ["env-filter", "fmt"] }
+tower-http = { version = "0.6.4", features = ["trace"] }
+thiserror = { version = "2.0.12" }
+chrono = { version = "0.4.40", features = ["serde"] }
+anyhow = { version = "1.0.98" }
+tower = { version = "0.5.2" }
+http = { version = "1.3.1" }
+
+[dev-dependencies]
+tokio = { version = "1.44.2", features = ["full"] }

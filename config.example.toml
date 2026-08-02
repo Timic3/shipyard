@@ -1,0 +1,31 @@
+# Shipyard — example configuration
+# Copy this file to config.toml and adjust for your deployment.
+#
+# The GitHub Personal Access Token is NOT stored here.
+# Set it via the GITHUB_TOKEN environment variable at runtime.
+
+[server]
+# Address and port to listen on.
+bind = "0.0.0.0:8080"
+
+[github]
+# How long to cache the GitHub releases list (in seconds).
+# Lower values mean fresher data but more API calls.
+# GitHub's default rate limit is 5,000 requests/hour for authenticated requests.
+cache_ttl_seconds = 60
+
+# Each [[apps]] block registers one application.
+# The slug becomes the :app path segment in the API.
+
+[[apps]]
+# URL-safe identifier used in API paths, e.g. GET /v1/update/myapp/stable/linux-x86_64
+slug = "myapp"
+# GitHub repository in "owner/repo" format. Supports private repos when
+# GITHUB_TOKEN has the appropriate permissions.
+github_repo = "owner/myapp"
+display_name = "My App"
+
+[[apps]]
+slug = "anotherapp"
+github_repo = "owner/anotherapp"
+display_name = "Another App"
